@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html len="en">
+     
+    <head> 
+           <title>SunnySide</title>
+
+    
+
+           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+           
+           <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+           <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}">
+
+
+     </head>
+     <body>
+
+        <!-- Header -->
+    <div class="header">
+        <div class="logo">LOGO</div>
+        <div class="nav-icons">
+
+            
+           
+             <a href="https://t.me/conceptians_library" target="_blank" class="social-icon"> 
+                <img src="{% static 'images/telegram.svg' %}" alt="Telegram">
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon">
+                <img src="{% static 'images/Platform=Facebook, Color=Original.svg' %}" alt="Facebook">
+            </a>
+
+            
+        </div>
+    </div>
+
+   
+    <div class="container">
+        
+        <div class="hero-section">
+            <br>
+            <br>
+            <h1>Hello!</h1>
+            <br>
+            <br>
+            <p > Glad to see you here. We are here to help you find the best university for you.
+            
+                Choose your qualification and country to get started.
+                For your dream!!!
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            
+            <div class="dropdowns">
+                <select class="dropdown dropdown-blue">
+                    <option value="option1">GED</option>
+                    <option value="option2">IGCSE</option>
+                    <option value="option3">OSSD</option>
+                </select>
+                <select class="dropdown dropdown-green">
+                    <option value="choice1">Thailand</option>
+                    <option value="choice2">Singapore</option>
+                    <option value="choice3">Japan</option>
+                </select>
+               
+               
+                 
+                <a  href="{% url 'landing' %}"><button class="search-icon">
+                    <img class="shar" src="{% static 'images/Search.svg' %}" alt="Search">
+                </button></a>
+                  
+            </div>
+        </div>
+
+        <!-- Sunny Side Section -->
+        <div class="sunny-side-section">
+            <h2>SUNNY SIDE</h2>
+            <br>
+            <br>
+            <div class="sunny-side-content">
+                <p>Knowing how to write a paragraph is incredibly important. It’s a basic aspect of writing, and it is something that everyone should know how to do. There is a specific structure that you have to follow when you’re writing a paragraph. This structure helps make it easier for the reader to understand what is going on. Through writing good paragraphs, a person can communicate a lot better through their writing.</p>
+
+                <div class="sunny-side-image"></div>
+            </div>
+        </div>
+
+        <!-- Your Trusted Buddy Section -->
+    <div class="buddy-section">
+        <h2>Your Trusted Buddy</h2>
+        <div class="buddy-slider">
+
+            <div class="buddy-boxes">
+                <div class="buddy-card" data-index="0">1</div>
+                <div class="buddy-card" data-index="1">2</div>
+                <div class="buddy-card" data-index="2">3</div>
+                <div class="buddy-card" data-index="3">4</div>
+
+                <div class="buddy-card" data-index="0">1</div>
+                <div class="buddy-card" data-index="1">2</div>
+                <div class="buddy-card" data-index="2">3</div>
+                <div class="buddy-card" data-index="3">4</div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                
+            </div>
+            
+        </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.buddy-boxes');
+    const cards = document.querySelectorAll('.buddy-card');
+    const dots = document.querySelectorAll('.dot');
+    const totalCards = cards.length; 
+    const cardWidth = 400 + 20; 
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    
+    function updateSlider(index) {
+        slider.style.transition = 'transform 0.5s ease';
+        slider.style.transform = `translateX(-${index * cardWidth}px)`;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+    }
+
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= totalCards) {
+                currentIndex = 0;
+            }
+            updateSlider(currentIndex);
+        }, 3000); 
+    }
+
+    
+    document.querySelector('.buddy-slider').addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+
+    
+    document.querySelector('.buddy-slider').addEventListener('mouseleave', startAutoSlide);
+
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            updateSlider(index);
+        });
+    });
+
+    
+    updateSlider(0);
+    startAutoSlide();
+});
+
+
+  
+    </script>
+    
+     </body>
+</html>
