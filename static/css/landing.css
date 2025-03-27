@@ -229,11 +229,32 @@ body {
     font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
+@media (max-width: 1024px) {
+    .buddy-slider {
+        width: 90%;
+    }
+
+    .buddy-card {
+        flex: 0 0 90%;
+    }
+}
 
 @media (max-width: 768px) {
-    .dropdowns {
+    .header {
         flex-direction: column;
         align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .dropdowns {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 90%;
     }
 
     .sunny-side-content {
@@ -245,22 +266,32 @@ body {
         max-width: 100%;
     }
 
-    
-}
-
-@media (max-width: 480px) {
-    .header {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .buddy-boxes {
-        height: clamp(150px, 40vw, 300px);
+    .buddy-slider {
+        width: 100%;
     }
 
     .buddy-card {
-        width: clamp(120px, 45vw, 250px);
-        height: clamp(120px, 35vw, 300px);
+        flex: 0 0 80%;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .buddy-card {
+        width: 100%;
+        height: auto;
+        font-size: 1rem;
     }
 
+    .buddy-boxes {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 100%;
+        font-size: 1rem;
+    }
 }
